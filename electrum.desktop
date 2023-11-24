@@ -3,13 +3,13 @@
 # Note: This assumes $HOME/.local/bin is in your $PATH
 
 [Desktop Entry]
-Comment=Lightweight Bitcoin Client
+Comment=Lightweight GlobalBoost Client
 Exec=electrum %u
-GenericName[en_US]=Bitcoin Wallet
-GenericName=Bitcoin Wallet
+GenericName[en_US]=GlobalBoost Wallet
+GenericName=GlobalBoost Wallet
 Icon=electrum
-Name[en_US]=Electrum Bitcoin Wallet
-Name=Electrum Bitcoin Wallet
+Name[en_US]=Electrum GlobalBoost Wallet
+Name=Electrum GlobalBoost Wallet
 Categories=Finance;Network;
 StartupNotify=true
 StartupWMClass=electrum
