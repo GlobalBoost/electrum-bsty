@@ -1,4 +1,4 @@
-# Electrum - Lightweight GlobalBoost client
+# Electrum - Lightweight GlobalBoost-Y client
 
 ```
 Licence: MIT Licence
