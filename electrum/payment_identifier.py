@@ -15,10 +15,10 @@ from .util import parse_max_spend, format_satoshis_plain, InvoiceError
 from .util import get_asyncio_loop, log_exceptions
 from .transaction import PartialTxOutput
 from .lnurl import decode_lnurl, request_lnurl, callback_lnurl, LNURLError, lightning_address_to_url
-from .bitcoin import COIN, TOTAL_COIN_SUPPLY_LIMIT_IN_BTC, opcodes, construct_script
+from .bitcoin import COIN, TOTAL_COIN_SUPPLY_LIMIT_IN_BSTY, opcodes, construct_script
 from .lnaddr import lndecode, LnDecodeException, LnInvoiceException
 from .lnutil import IncompatibleOrInsaneFeatures
-from .bip21 import parse_bip21_URI, InvalidBitcoinURI, LIGHTNING_URI_SCHEME, BITCOIN_BIP21_URI_SCHEME
+from .bip21 import parse_bip21_URI, InvalidBitcoinURI, LIGHTNING_URI_SCHEME, GLOBALBOOST_BIP21_URI_SCHEME
 from . import paymentrequest
 
 if TYPE_CHECKING:
@@ -40,7 +40,7 @@ def maybe_extract_lightning_payment_identifier(data: str) -> Optional[str]:
 def is_uri(data: str) -> bool:
     data = data.lower()
     if (data.startswith(LIGHTNING_URI_SCHEME + ":") or
-            data.startswith(BITCOIN_BIP21_URI_SCHEME + ':')):
+            data.startswith(GLOBALBOOST_BIP21_URI_SCHEME + ':')):
         return True
     return False
 
@@ -240,7 +240,7 @@ class PaymentIdentifier(Logger):
                     self.logger.debug(f'Exception cause {e.args!r}')
                     return
                 self.set_state(PaymentIdentifierState.AVAILABLE)
-        elif text.lower().startswith(BITCOIN_BIP21_URI_SCHEME + ':'):
+        elif text.lower().startswith(GLOBALBOOST_BIP21_URI_SCHEME + ':'):
             try:
                 out = parse_bip21_URI(text)
             except InvalidBitcoinURI as e:

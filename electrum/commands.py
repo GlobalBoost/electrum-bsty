@@ -1292,7 +1292,7 @@ class Commands:
     @command('wnpl')
     async def normal_swap(self, onchain_amount, lightning_amount, password=None, wallet: Abstract_Wallet = None):
         """
-        Normal submarine swap: send on-chain BTC, receive on Lightning
+        Normal submarine swap: send on-chain BSTY, receive on Lightning
         Note that your funds will be locked for 24h if you do not have enough incoming capacity.
         """
         sm = wallet.lnworker.swap_manager
@@ -1361,9 +1361,9 @@ class Commands:
         to_ccy = to_ccy.upper()
         # Default currencies
         if from_ccy == '':
-            from_ccy = "BTC" if to_ccy != "BTC" else self.daemon.fx.ccy
+            from_ccy = "BSTY" if to_ccy != "BSTY" else self.daemon.fx.ccy
         if to_ccy == '':
-            to_ccy = "BTC" if from_ccy != "BTC" else self.daemon.fx.ccy
+            to_ccy = "BSTY" if from_ccy != "BSTY" else self.daemon.fx.ccy
         # Get current rates
         rate_from = self.daemon.fx.exchange.get_cached_spot_quote(from_ccy)
         rate_to = self.daemon.fx.exchange.get_cached_spot_quote(to_ccy)
@@ -1408,7 +1408,7 @@ param_descriptions = {
     'pubkey': 'Public key',
     'message': 'Clear text message. Use quotes if it contains spaces.',
     'encrypted': 'Encrypted message',
-    'amount': 'Amount to be sent (in BTC). Type \'!\' to send the maximum available.',
+    'amount': 'Amount to be sent (in BSTY). Type \'!\' to send the maximum available.',
     'outputs': 'list of ["address", amount]',
     'redeem_script': 'redeem script (hexadecimal)',
     'lightning_amount': "Amount sent or received in a submarine swap. Set it to 'dryrun' to receive a value",
@@ -1428,7 +1428,7 @@ command_options = {
     'labels':      ("-l", "Show the labels of listed addresses"),
     'nocheck':     (None, "Do not verify aliases"),
     'imax':        (None, "Maximum number of inputs"),
-    'fee':         ("-f", "Transaction fee (absolute, in BTC)"),
+    'fee':         ("-f", "Transaction fee (absolute, in BSTY)"),
     'feerate':     (None, "Transaction fee rate (in sat/byte)"),
     'from_addr':   ("-F", "Source address (must be a wallet address; use sweep to spend from non-wallet address)."),
     'from_coins':  (None, "Source coins (must be in wallet; use sweep to spend from non-wallet address)."),
@@ -1449,7 +1449,7 @@ command_options = {
     'timeout':     (None, "Timeout in seconds"),
     'force':       (None, "Create new address beyond gap limit, if no more addresses are available."),
     'pending':     (None, "Show only pending requests."),
-    'push_amount': (None, 'Push initial amount (in BTC)'),
+    'push_amount': (None, 'Push initial amount (in BSTY)'),
     'zeroconf':    (None, 'request zeroconf channel'),
     'expired':     (None, "Show only expired requests."),
     'paid':        (None, "Show only paid requests."),

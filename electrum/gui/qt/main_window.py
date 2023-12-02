@@ -57,7 +57,7 @@ from electrum.i18n import _
 from electrum.util import (format_time, UserCancelled, profiler, bfh, InvalidPassword,
                            UserFacingException, get_new_wallet_name, send_exception_to_crash_reporter,
                            AddTransactionException, os_chmod)
-from electrum.bip21 import BITCOIN_BIP21_URI_SCHEME
+from electrum.bip21 import GLOBALBOOST_BIP21_URI_SCHEME
 from electrum.payment_identifier import PaymentIdentifier
 from electrum.invoices import PR_PAID, Invoice
 from electrum.transaction import (Transaction, PartialTxInput,
@@ -75,7 +75,7 @@ from electrum.lnaddr import lndecode
 from electrum.submarine_swaps import SwapServerError
 
 from .exception_window import Exception_Hook
-from .amountedit import BTCAmountEdit
+from .amountedit import BSTYAmountEdit
 from .qrcodewidget import QRDialog
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit, ScanShowQRTextEdit
 from .transaction_dialog import show_transaction
@@ -893,7 +893,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, QtEventListener):
 
     def format_amount_and_units(self, amount_sat, *, timestamp: int = None) -> str:
         """Returns string with both bitcoin and fiat amounts, in desired units.
-        E.g. 500_000 -> '0.005 BTC (191.42 EUR)'
+        E.g. 500_000 -> '0.005 BSTY (191.42 EUR)'
         """
         text = self.config.format_amount_and_units(amount_sat)
         fiat = self.fx.format_amount_and_units(amount_sat, timestamp=timestamp) if self.fx else None
@@ -2081,7 +2081,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, QtEventListener):
             if not data:
                 return
             # if the user scanned a bitcoin URI
-            if data.lower().startswith(BITCOIN_BIP21_URI_SCHEME + ':'):
+            if data.lower().startswith(GLOBALBOOST_BIP21_URI_SCHEME + ':'):
                 self.handle_payment_identifier(data)
                 return
             if data.lower().startswith('channel_backup:'):
@@ -2594,7 +2594,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, QtEventListener):
         output_amount = QLabel('')
         grid.addWidget(QLabel(_('Output amount') + ':'), 2, 0)
         grid.addWidget(output_amount, 2, 1)
-        fee_e = BTCAmountEdit(self.get_decimal_point)
+        fee_e = BSTYAmountEdit(self.get_decimal_point)
         combined_fee = QLabel('')
         combined_feerate = QLabel('')
         def on_fee_edit(x):

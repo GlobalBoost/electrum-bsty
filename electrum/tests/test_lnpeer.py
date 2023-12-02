@@ -932,10 +932,10 @@ class TestPeerDirect(TestPeer):
     async def test_payment_recv_mpp_confusion1(self):
         """Regression test for https://github.com/spesmilo/electrum/security/advisories/GHSA-8r85-vp7r-hjxf"""
         # This test checks that the following attack does not work:
-        #   - Bob creates invoice1: 1 BTC, H1, S1
-        #   - Bob creates invoice2: 1 BTC, H2, S2;  both given to attacker to pay
-        #   - Alice sends htlc1: 0.1 BTC, H1, S1  (total_msat=1 BTC)
-        #   - Alice sends htlc2: 0.9 BTC, H2, S1  (total_msat=1 BTC)
+        #   - Bob creates invoice1: 1 BSTY, H1, S1
+        #   - Bob creates invoice2: 1 BSTY, H2, S2;  both given to attacker to pay
+        #   - Alice sends htlc1: 0.1 BSTY, H1, S1  (total_msat=1 BSTY)
+        #   - Alice sends htlc2: 0.9 BSTY, H2, S1  (total_msat=1 BSTY)
         #   - Bob(victim) reveals preimage for H1 and fulfills htlc1 (fails other)
         alice_channel, bob_channel = create_test_channels()
         p1, p2, w1, w2, _q1, _q2 = self.prepare_peers(alice_channel, bob_channel)
@@ -1010,9 +1010,9 @@ class TestPeerDirect(TestPeer):
     async def test_payment_recv_mpp_confusion2(self):
         """Regression test for https://github.com/spesmilo/electrum/security/advisories/GHSA-8r85-vp7r-hjxf"""
         # This test checks that the following attack does not work:
-        #   - Bob creates invoice: 1 BTC
-        #   - Alice sends htlc1: 0.1 BTC  (total_msat=0.2 BTC)
-        #   - Alice sends htlc2: 0.1 BTC  (total_msat=1 BTC)
+        #   - Bob creates invoice: 1 BSTY
+        #   - Alice sends htlc1: 0.1 BSTY  (total_msat=0.2 BSTY)
+        #   - Alice sends htlc2: 0.1 BSTY  (total_msat=1 BSTY)
         #   - Bob(victim) reveals preimage and fulfills htlc2 (fails other)
         alice_channel, bob_channel = create_test_channels()
         p1, p2, w1, w2, _q1, _q2 = self.prepare_peers(alice_channel, bob_channel)
@@ -1567,7 +1567,7 @@ class TestPeerForwarding(TestPeer):
 
     async def test_refuse_to_forward_htlc_that_corresponds_to_payreq_we_created(self):
         # This test checks that the following attack does not work:
-        #   - Bob creates payment request with HASH1, for 1 BTC; and gives the payreq to Alice
+        #   - Bob creates payment request with HASH1, for 1 BSTY; and gives the payreq to Alice
         #   - Alice sends htlc A->B->D, for 100k sat, with HASH1
         #   - Bob must not release the preimage of HASH1
         graph_def = self.GRAPH_DEFINITIONS['square_graph']

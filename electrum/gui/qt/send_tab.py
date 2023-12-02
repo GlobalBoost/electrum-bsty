@@ -20,7 +20,7 @@ from electrum.network import TxBroadcastError, BestEffortRequestFailed
 from electrum.payment_identifier import PaymentIdentifierState, PaymentIdentifierType, PaymentIdentifier, \
     invoice_from_payment_identifier, payment_identifier_from_invoice
 
-from .amountedit import AmountEdit, BTCAmountEdit, SizedFreezableLineEdit
+from .amountedit import AmountEdit, BSTYAmountEdit, SizedFreezableLineEdit
 from .paytoedit import InvalidPaymentIdentifier
 from .util import (WaitingDialog, HelpLabel, MessageBoxMixin, EnterButton,
                    char_width_in_lineedit, get_iconname_camera, get_iconname_qrcode,
@@ -61,7 +61,7 @@ class SendTab(QWidget, MessageBoxMixin, Logger):
         grid.setColumnStretch(3, 1)
 
         from .paytoedit import PayToEdit
-        self.amount_e = BTCAmountEdit(self.window.get_decimal_point)
+        self.amount_e = BSTYAmountEdit(self.window.get_decimal_point)
         self.payto_e = PayToEdit(self)
         msg = (_("Recipient of the funds.")
                + "\n\n"

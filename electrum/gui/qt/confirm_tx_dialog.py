@@ -52,7 +52,7 @@ if TYPE_CHECKING:
 
 from .transaction_dialog import TxSizeLabel, TxFiatLabel, TxInOutWidget
 from .fee_slider import FeeSlider, FeeComboBox
-from .amountedit import FeerateEdit, BTCAmountEdit
+from .amountedit import FeerateEdit, BSTYAmountEdit
 from .locktimeedit import LockTimeEdit
 
 
@@ -172,7 +172,7 @@ class TxEditor(WindowModalDialog):
         self.feerate_e.editingFinished.connect(partial(self.on_fee_or_feerate, self.feerate_e, True))
         self.update_feerate_label()
 
-        self.fee_e = BTCAmountEdit(self.main_window.get_decimal_point)
+        self.fee_e = BSTYAmountEdit(self.main_window.get_decimal_point)
         self.fee_e.textEdited.connect(partial(self.on_fee_or_feerate, self.fee_e, False))
         self.fee_e.editingFinished.connect(partial(self.on_fee_or_feerate, self.fee_e, True))
 

@@ -15,7 +15,7 @@ from PyQt6.QtQml import qmlRegisterType, qmlRegisterUncreatableType, QQmlApplica
 from electrum import version, constants
 from electrum.i18n import _
 from electrum.logging import Logger, get_logger
-from electrum.bip21 import BITCOIN_BIP21_URI_SCHEME, LIGHTNING_URI_SCHEME
+from electrum.bip21 import GLOBALBOOST_BIP21_URI_SCHEME, LIGHTNING_URI_SCHEME
 from electrum.base_crash_reporter import BaseCrashReporter, EarlyExceptionsQueue
 from electrum.network import Network
 from electrum.plugin import run_hook
@@ -175,7 +175,7 @@ class QEAppController(BaseCrashReporter, QObject):
         data = str(intent.getDataString())
         self.logger.debug(f'received intent: {repr(data)}')
         scheme = str(intent.getScheme()).lower()
-        if scheme == BITCOIN_BIP21_URI_SCHEME or scheme == LIGHTNING_URI_SCHEME:
+        if scheme == GLOBALBOOST_BIP21_URI_SCHEME or scheme == LIGHTNING_URI_SCHEME:
             self.uriReceived.emit(data)
 
     def startupFinished(self):

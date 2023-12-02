@@ -291,11 +291,11 @@ class TrezorPlugin(HW_PluginBase):
         if self.config.decimal_point == 0:
             return AmountUnit.SATOSHI
         elif self.config.decimal_point == 2:
-            return AmountUnit.MICROBITCOIN
+            return AmountUnit.MICROGLOBALBOOST
         elif self.config.decimal_point == 5:
-            return AmountUnit.MILLIBITCOIN
+            return AmountUnit.MILLIGLOBALBOOST
         else:
-            return AmountUnit.BITCOIN
+            return AmountUnit.GLOBALBOOST
 
     @runs_in_hwd_thread
     def sign_transaction(self, keystore, tx: PartialTransaction, prev_tx):

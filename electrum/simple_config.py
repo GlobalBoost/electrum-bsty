@@ -226,14 +226,14 @@ class SimpleConfig(Logger):
 
         # units and formatting
         # FIXME is this duplication (dp, nz, post_sat, thou_sep) due to performance reasons??
-        self.decimal_point = self.BTC_AMOUNTS_DECIMAL_POINT
+        self.decimal_point = self.BSTY_AMOUNTS_DECIMAL_POINT
         try:
             decimal_point_to_base_unit_name(self.decimal_point)
         except UnknownBaseUnit:
             self.decimal_point = DECIMAL_POINT_DEFAULT
-        self.num_zeros = self.BTC_AMOUNTS_FORCE_NZEROS_AFTER_DECIMAL_POINT
-        self.amt_precision_post_satoshi = self.BTC_AMOUNTS_PREC_POST_SAT
-        self.amt_add_thousands_sep = self.BTC_AMOUNTS_ADD_THOUSANDS_SEP
+        self.num_zeros = self.BSTY_AMOUNTS_FORCE_NZEROS_AFTER_DECIMAL_POINT
+        self.amt_precision_post_satoshi = self.BSTY_AMOUNTS_PREC_POST_SAT
+        self.amt_add_thousands_sep = self.BSTY_AMOUNTS_ADD_THOUSANDS_SEP
 
     def electrum_path(self):
         # Read electrum_path from command line
@@ -878,7 +878,7 @@ class SimpleConfig(Logger):
     def set_base_unit(self, unit):
         assert unit in base_units.keys()
         self.decimal_point = base_unit_name_to_decimal_point(unit)
-        self.BTC_AMOUNTS_DECIMAL_POINT = self.decimal_point
+        self.BSTY_AMOUNTS_DECIMAL_POINT = self.decimal_point
 
     def get_decimal_point(self):
         return self.decimal_point
@@ -1100,17 +1100,17 @@ This will result in longer routes; it might increase your fees and decrease the 
     GUI_QML_ADDRESS_LIST_SHOW_TYPE = ConfigVar('address_list_show_type', default=1, type_=int)
     GUI_QML_ADDRESS_LIST_SHOW_USED = ConfigVar('address_list_show_used', default=False, type_=bool)
 
-    BTC_AMOUNTS_DECIMAL_POINT = ConfigVar('decimal_point', default=DECIMAL_POINT_DEFAULT, type_=int)
-    BTC_AMOUNTS_FORCE_NZEROS_AFTER_DECIMAL_POINT = ConfigVar(
+    BSTY_AMOUNTS_DECIMAL_POINT = ConfigVar('decimal_point', default=DECIMAL_POINT_DEFAULT, type_=int)
+    BSTY_AMOUNTS_FORCE_NZEROS_AFTER_DECIMAL_POINT = ConfigVar(
         'num_zeros', default=0, type_=int,
         short_desc=lambda: _('Zeros after decimal point'),
         long_desc=lambda: _('Number of zeros displayed after the decimal point. For example, if this is set to 2, "1." will be displayed as "1.00"'),
     )
-    BTC_AMOUNTS_PREC_POST_SAT = ConfigVar(
+    BSTY_AMOUNTS_PREC_POST_SAT = ConfigVar(
         'amt_precision_post_satoshi', default=0, type_=int,
         short_desc=lambda: _("Show Lightning amounts with msat precision"),
     )
-    BTC_AMOUNTS_ADD_THOUSANDS_SEP = ConfigVar(
+    BSTY_AMOUNTS_ADD_THOUSANDS_SEP = ConfigVar(
         'amt_add_thousands_sep', default=False, type_=bool,
         short_desc=lambda: _("Add thousand separators to bitcoin amounts"),
     )
