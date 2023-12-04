@@ -85,7 +85,7 @@ android.permissions = INTERNET, CAMERA, WRITE_EXTERNAL_STORAGE
 
 # (int) Android API to use  (compileSdkVersion)
 # note: when changing, Dockerfile also needs to be changed to install corresponding build tools
-android.api = 34
+android.api = 33
 
 # (int) Android targetSdkVersion
 android.target_sdk_version = 34
