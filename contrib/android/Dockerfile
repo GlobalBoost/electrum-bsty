@@ -31,8 +31,8 @@ RUN apt -y update -qq \
 
 
 ENV ANDROID_NDK_HOME="${ANDROID_HOME}/android-ndk"
-ENV ANDROID_NDK_VERSION="26b"
-ENV ANDROID_NDK_HASH="ad73c0370f0b0a87d1671ed2fd5a9ac9acfd1eb5c43a7fbfbd330f85d19dd632"
+ENV ANDROID_NDK_VERSION="25b"
+ENV ANDROID_NDK_HASH="403ac3e3020dd0db63a848dcaba6ceb2603bf64de90949d5c4361f848e44b005"
 ENV ANDROID_NDK_HOME_V="${ANDROID_NDK_HOME}-r${ANDROID_NDK_VERSION}"
 
 # get the latest version from https://developer.android.com/ndk/downloads/index.html
