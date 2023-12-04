@@ -81,10 +81,10 @@ RUN apt -y update -qq \
 RUN yes | ${ANDROID_SDK_MANAGER} --licenses > /dev/null
 
 
-ENV ANDROID_SDK_BUILD_TOOLS_VERSION="34.0.0"
+ENV ANDROID_SDK_BUILD_TOOLS_VERSION="33.0.0"
 
 # download platforms, API, build tools
-RUN ${ANDROID_SDK_MANAGER} "platforms;android-34" > /dev/null && \
+RUN ${ANDROID_SDK_MANAGER} "platforms;android-33" > /dev/null && \
     ${ANDROID_SDK_MANAGER} "build-tools;${ANDROID_SDK_BUILD_TOOLS_VERSION}" > /dev/null && \
     ${ANDROID_SDK_MANAGER} "extras;android;m2repository" > /dev/null && \
     chmod +x "${ANDROID_SDK_HOME}/cmdline-tools/bin/avdmanager"
