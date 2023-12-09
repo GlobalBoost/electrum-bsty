@@ -47,7 +47,7 @@ is_appimage = 'APPIMAGE' in os.environ
 is_binary_distributable = is_pyinstaller or is_android or is_appimage
 # is_local: unpacked tar.gz but not pip installed, or git clone
 is_local = (not is_binary_distributable
-            and os.path.exists(os.path.join(script_dir, "electrum.desktop")))
+            and os.path.exists(os.path.join(script_dir, "electrum-bsty.desktop")))
 is_git_clone = is_local and os.path.exists(os.path.join(script_dir, ".git"))
 
 if is_git_clone:
@@ -91,26 +91,26 @@ if not is_android:
 
 sys._ELECTRUM_RUNNING_VIA_RUNELECTRUM = True  # used by logging.py
 
-from electrum.logging import get_logger, configure_logging  # import logging submodule first
-from electrum import util
-from electrum.payment_identifier import PaymentIdentifier
-from electrum import constants
-from electrum import SimpleConfig
-from electrum.wallet_db import WalletDB
-from electrum.wallet import Wallet
-from electrum.storage import WalletStorage
-from electrum.util import print_msg, print_stderr, json_encode, json_decode, UserCancelled
-from electrum.util import InvalidPassword
-from electrum.commands import get_parser, known_commands, Commands, config_variables
-from electrum import daemon
-from electrum import keystore
-from electrum.util import create_and_start_event_loop
-from electrum.i18n import set_language
+from electrum_bsty.logging import get_logger, configure_logging  # import logging submodule first
+from electrum_bsty import util
+from electrum_bsty.payment_identifier import PaymentIdentifier
+from electrum_bsty import constants
+from electrum_bsty import SimpleConfig
+from electrum_bsty.wallet_db import WalletDB
+from electrum_bsty.wallet import Wallet
+from electrum_bsty.storage import WalletStorage
+from electrum_bsty.util import print_msg, print_stderr, json_encode, json_decode, UserCancelled
+from electrum_bsty.util import InvalidPassword
+from electrum_bsty.commands import get_parser, known_commands, Commands, config_variables
+from electrum_bsty import daemon
+from electrum_bsty import keystore
+from electrum_bsty.util import create_and_start_event_loop
+from electrum_bsty.i18n import set_language
 
 if TYPE_CHECKING:
     import threading
 
-    from electrum.plugin import Plugins
+    from electrum_bsty.plugin import Plugins
 
 _logger = get_logger(__name__)
 
@@ -143,7 +143,7 @@ def init_cmdline(config_options, wallet_path, *, rpcserver: bool, config: 'Simpl
 
     if cmd.requires_wallet and not storage.file_exists():
         print_msg("Error: Wallet file not found.")
-        print_msg("Type 'electrum create' to create a new wallet, or provide a path to a wallet with the -w option")
+        print_msg("Type 'electrum-bsty create' to create a new wallet, or provide a path to a wallet with the -w option")
         sys_exit(1)
 
     # important warning
@@ -260,7 +260,7 @@ async def run_offline_command(config, config_options, plugins: 'Plugins'):
 
 
 def init_plugins(config, gui_name):
-    from electrum.plugin import Plugins
+    from electrum_bsty.plugin import Plugins
     return Plugins(config, gui_name)
 
 
@@ -344,7 +344,7 @@ def main():
     if config_options.get('portable'):
         if is_local:
             # running from git clone or local source: put datadir next to main script
-            datadir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'electrum_data')
+            datadir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'electrum-bsty_data')
         else:
             # Running a binary or installed source. The most generic but still reasonable thing
             # is to use the current working directory. (see #7732)
@@ -352,7 +352,7 @@ def main():
             #       and we don't want to put the datadir inside a temp dir.
             # note: Re the portable .exe on Windows, when the user double-clicks it, CWD gets set
             #       to the parent dir, i.e. we will put the datadir next to the exe.
-            datadir = os.path.join(os.path.realpath(cwd), 'electrum_data')
+            datadir = os.path.join(os.path.realpath(cwd), 'electrum-bsty_data')
         config_options['electrum_path'] = datadir
 
     if not config_options.get('verbosity'):
@@ -372,7 +372,7 @@ def main():
         lang = config.LOCALIZATION_LANGUAGE
         if not lang:
             try:
-                from electrum.gui.default_lang import get_default_language
+                from electrum_bsty.gui.default_lang import get_default_language
                 lang = get_default_language(gui_name=gui_name)
                 _logger.info(f"get_default_language: detected default as {lang=!r}")
             except ImportError as e:
@@ -486,7 +486,7 @@ def handle_cmd(*, cmdname: str, config: 'SimpleConfig', config_options: dict):
             try:
                 result = daemon.request(config, 'run_cmdline', (config_options,), timeout)
             except daemon.DaemonNotRunning:
-                print_msg("Daemon not running; try 'electrum daemon -d'")
+                print_msg("Daemon not running; try 'electrum-bsty daemon -d'")
                 if not cmd.requires_network:
                     print_msg("To run this command without a daemon, use --offline")
                 if cmd.name == "stop":  # remove lockfile if it exists, as daemon looks dead
@@ -505,7 +505,7 @@ def handle_cmd(*, cmdname: str, config: 'SimpleConfig', config_options: dict):
             lockfile = daemon.get_lockfile(config)
             if os.path.exists(lockfile):
                 print_stderr("Daemon already running (lockfile detected)")
-                print_stderr("Run 'electrum stop' to stop the daemon.")
+                print_stderr("Run 'electrum-bsty stop' to stop the daemon.")
                 print_stderr("Run this command without --offline to interact with the daemon")
                 sys_exit(1)
             init_cmdline(config_options, wallet_path, rpcserver=False, config=config)

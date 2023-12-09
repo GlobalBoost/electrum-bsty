@@ -2,5 +2,5 @@
 	path = contrib/deterministic-build/electrum-locale
 	url = https://github.com/spesmilo/electrum-locale
 [submodule "electrum/www"]
-	path = electrum/plugins/payserver/www
+	path = electrum_bsty/plugins/payserver/www
 	url = https://github.com/spesmilo/electrum-http.git
