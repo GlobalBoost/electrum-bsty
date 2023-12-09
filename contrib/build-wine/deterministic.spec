@@ -8,7 +8,7 @@ cmdline_name = os.environ.get("ELECTRUM_CMDLINE_NAME")
 if not cmdline_name:
     raise Exception('no name')
 
-home = 'C:\\electrum\\'
+home = 'C:\\electrum-bsty\\'
 
 # see https://github.com/pyinstaller/pyinstaller/issues/2005
 hiddenimports = []
@@ -21,8 +21,8 @@ hiddenimports += collect_submodules('keepkeylib')
 hiddenimports += collect_submodules('websocket')
 hiddenimports += collect_submodules('ckcc')
 hiddenimports += collect_submodules('bitbox02')
-hiddenimports += ['electrum.plugins.jade.jade']
-hiddenimports += ['electrum.plugins.jade.jadepy.jade']
+hiddenimports += ['electrum_bsty.plugins.jade.jade']
+hiddenimports += ['electrum_bsty.plugins.jade.jadepy.jade']
 hiddenimports += ['PyQt5.QtPrintSupport']  # needed by Revealer
 
 
@@ -36,13 +36,13 @@ binaries += [('C:/tmp/libusb-1.0.dll', '.')]
 binaries += [('C:/tmp/libzbar-0.dll', '.')]
 
 datas = [
-    (home+'electrum/*.json', 'electrum'),
-    (home+'electrum/lnwire/*.csv', 'electrum/lnwire'),
-    (home+'electrum/wordlist/english.txt', 'electrum/wordlist'),
-    (home+'electrum/wordlist/slip39.txt', 'electrum/wordlist'),
-    (home+'electrum/locale', 'electrum/locale'),
-    (home+'electrum/plugins', 'electrum/plugins'),
-    (home+'electrum/gui/icons', 'electrum/gui/icons'),
+    (home+'electrum_bsty/*.json', 'electrum'),
+    (home+'electrum_bsty/lnwire/*.csv', 'electrum/lnwire'),
+    (home+'electrum_bsty/wordlist/english.txt', 'electrum/wordlist'),
+    (home+'electrum_bsty/wordlist/slip39.txt', 'electrum/wordlist'),
+    (home+'electrum_bsty/locale', 'electrum/locale'),
+    (home+'electrum_bsty/plugins', 'electrum/plugins'),
+    (home+'electrum_bsty/gui/icons', 'electrum/gui/icons'),
 ]
 datas += collect_data_files('trezorlib')
 datas += collect_data_files('safetlib')
@@ -53,23 +53,23 @@ datas += collect_data_files('bitbox02')
 
 # We don't put these files in to actually include them in the script but to make the Analysis method scan them for imports
 a = Analysis([home+'run_electrum',
-              home+'electrum/gui/qt/main_window.py',
-              home+'electrum/gui/qt/qrreader/qtmultimedia/camera_dialog.py',
-              home+'electrum/gui/text.py',
-              home+'electrum/util.py',
-              home+'electrum/wallet.py',
-              home+'electrum/simple_config.py',
-              home+'electrum/bitcoin.py',
-              home+'electrum/dnssec.py',
-              home+'electrum/commands.py',
-              home+'electrum/plugins/cosigner_pool/qt.py',
-              home+'electrum/plugins/trezor/qt.py',
-              home+'electrum/plugins/safe_t/client.py',
-              home+'electrum/plugins/safe_t/qt.py',
-              home+'electrum/plugins/keepkey/qt.py',
-              home+'electrum/plugins/ledger/qt.py',
-              home+'electrum/plugins/coldcard/qt.py',
-              home+'electrum/plugins/jade/qt.py',
+              home+'electrum_bsty/gui/qt/main_window.py',
+              home+'electrum_bsty/gui/qt/qrreader/qtmultimedia/camera_dialog.py',
+              home+'electrum_bsty/gui/text.py',
+              home+'electrum_bsty/util.py',
+              home+'electrum_bsty/wallet.py',
+              home+'electrum_bsty/simple_config.py',
+              home+'electrum_bsty/bitcoin.py',
+              home+'electrum_bsty/dnssec.py',
+              home+'electrum_bsty/commands.py',
+              home+'electrum_bsty/plugins/cosigner_pool/qt.py',
+              home+'electrum_bsty/plugins/trezor/qt.py',
+              home+'electrum_bsty/plugins/safe_t/client.py',
+              home+'electrum_bsty/plugins/safe_t/qt.py',
+              home+'electrum_bsty/plugins/keepkey/qt.py',
+              home+'electrum_bsty/plugins/ledger/qt.py',
+              home+'electrum_bsty/plugins/coldcard/qt.py',
+              home+'electrum_bsty/plugins/jade/qt.py',
               #home+'packages/requests/utils.py'
               ],
              binaries=binaries,
@@ -125,11 +125,11 @@ exe_standalone = EXE(
     a.scripts,
     a.binaries,
     a.datas,
-    name=os.path.join('build\\pyi.win32\\electrum', cmdline_name + ".exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-bsty', cmdline_name + ".exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum/gui/icons/electrum.ico',
+    icon=home+'electrum_bsty/gui/icons/electrum.ico',
     console=False)
     # console=True makes an annoying black box pop up, but it does make Electrum output command line commands, with this turned off no output will be given but commands can still be used
 
@@ -138,11 +138,11 @@ exe_portable = EXE(
     a.scripts,
     a.binaries,
     a.datas + [('is_portable', 'README.md', 'DATA')],
-    name=os.path.join('build\\pyi.win32\\electrum', cmdline_name + "-portable.exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-bsty', cmdline_name + "-portable.exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum/gui/icons/electrum.ico',
+    icon=home+'electrum_bsty/gui/icons/electrum.ico',
     console=False)
 
 #####
@@ -152,22 +152,22 @@ exe_inside_setup_noconsole = EXE(
     pyz,
     a.scripts,
     exclude_binaries=True,
-    name=os.path.join('build\\pyi.win32\\electrum', cmdline_name),
+    name=os.path.join('build\\pyi.win32\\electrum-bsty', cmdline_name),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum/gui/icons/electrum.ico',
+    icon=home+'electrum_bsty/gui/icons/electrum.ico',
     console=False)
 
 exe_inside_setup_console = EXE(
     pyz,
     a.scripts,
     exclude_binaries=True,
-    name=os.path.join('build\\pyi.win32\\electrum', cmdline_name+"-debug"),
+    name=os.path.join('build\\pyi.win32\\electrum-bsty', cmdline_name+"-debug"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum/gui/icons/electrum.ico',
+    icon=home+'electrum_bsty/gui/icons/electrum.ico',
     console=True)
 
 coll = COLLECT(
@@ -179,6 +179,6 @@ coll = COLLECT(
     strip=None,
     upx=True,
     debug=False,
-    icon=home+'electrum/gui/icons/electrum.ico',
+    icon=home+'electrum_bsty/gui/icons/electrum.ico',
     console=False,
-    name=os.path.join('dist', 'electrum'))
+    name=os.path.join('dist', 'electrum-bsty'))

@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = Electrum
+title = Electrum-BSTY
 
 # (str) Package name
-package.name = Electrum
+package.name = Electrum_BSTY
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.electrum
+package.domain = org.electrum_bsty
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -20,11 +20,11 @@ source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
 source.exclude_dirs = bin, build, dist, contrib, env,
-    electrum/tests,
-    electrum/www,
-    electrum/gui/qt,
-    electrum/gui/kivy,
-    electrum/plugins/payserver,
+    electrum_bsty/tests,
+    electrum_bsty/www,
+    electrum_bsty/gui/qt,
+    electrum_bsty/gui/kivy,
+    electrum_bsty/plugins/payserver,
     packages/qdarkstyle,
     packages/qtpy,
     packages/bin,
@@ -40,7 +40,7 @@ source.exclude_patterns = Makefile,setup*,
 
 # (str) Application versioning (method 1)
 version.regex = APK_VERSION = '(.*)'
-version.filename = %(source.dir)s/electrum/version.py
+version.filename = %(source.dir)s/electrum_bsty/version.py
 
 # (str) Application versioning (method 2)
 #version = 1.9.8
@@ -62,12 +62,12 @@ requirements =
     libzbar
 
 # (str) Presplash of the application
-presplash.filename = %(source.dir)s/electrum/gui/icons/electrum_presplash.png
+presplash.filename = %(source.dir)s/electrum_bsty/gui/icons/electrum_presplash.png
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/electrum/gui/icons/android_electrum_icon_legacy.png
-icon.adaptive_foreground.filename = %(source.dir)s/electrum/gui/icons/android_electrum_icon_foreground.png
-icon.adaptive_background.filename = %(source.dir)s/electrum/gui/icons/android_electrum_icon_background.png
+icon.filename = %(source.dir)s/electrum_bsty/gui/icons/android_electrum_icon_legacy.png
+icon.adaptive_foreground.filename = %(source.dir)s/electrum_bsty/gui/icons/android_electrum_icon_foreground.png
+icon.adaptive_background.filename = %(source.dir)s/electrum_bsty/gui/icons/android_electrum_icon_background.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = portrait
@@ -138,13 +138,13 @@ android.add_jars = .buildozer/android/platform/*/build/libs_collections/Electrum
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
-android.add_src = electrum/gui/qml/java_classes/
+android.add_src = electrum_bsty/gui/qml/java_classes/
 
 android.gradle_dependencies =
     com.android.support:support-compat:28.0.0,
     me.dm7.barcodescanner:zxing:1.9.8
 
-android.add_activities = org.electrum.qr.SimpleScannerActivity
+android.add_activities = org.electrum_bsty.qr.SimpleScannerActivity
 
 # (list) Put these files or directories in the apk res directory.
 # The option may be used in three ways, the value may contain one or zero ':'

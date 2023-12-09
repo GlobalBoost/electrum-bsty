@@ -19,7 +19,7 @@
 #
 # Note: steps before doing a new release:
 # - update locale:
-#     1. cd /opt/electrum-locale && ./update.py && git push
+#     1. cd /opt/electrum-bsty-locale && ./update.py && git push
 #     2. cd to the submodule dir, and git pull
 #     3. cd .. && git push
 # - update RELEASE-NOTES and version.py
@@ -59,7 +59,7 @@ fi
 
 export SSHUSER="$GPGUSER"
 RELEASEMANAGER=""
-if [ "$GPGUSER" == "ThomasV" ]; then
+if [ "$GPGUSER" == "mendozg" ]; then
     PUBKEY="--local-user 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6"
     export SSHUSER=thomasv
     RELEASEMANAGER=1
@@ -97,7 +97,7 @@ fi
 set -x
 
 # create tarball
-tarball="Electrum-$VERSION.tar.gz"
+tarball="Electrum-BSTY-$VERSION.tar.gz"
 if test -f "dist/$tarball"; then
     info "file exists: $tarball"
 else
@@ -105,7 +105,7 @@ else
 fi
 
 # create source-only tarball
-srctarball="Electrum-sourceonly-$VERSION.tar.gz"
+srctarball="Electrum-BSTY-sourceonly-$VERSION.tar.gz"
 if test -f "dist/$srctarball"; then
     info "file exists: $srctarball"
 else
@@ -113,7 +113,7 @@ else
 fi
 
 # appimage
-appimage="electrum-$REV-x86_64.AppImage"
+appimage="electrum-bsty-$REV-x86_64.AppImage"
 if test -f "dist/$appimage"; then
     info "file exists: $appimage"
 else
@@ -122,9 +122,9 @@ fi
 
 
 # windows
-win1="electrum-$REV.exe"
-win2="electrum-$REV-portable.exe"
-win3="electrum-$REV-setup.exe"
+win1="electrum-bsty-$REV.exe"
+win2="electrum-bsty-$REV-portable.exe"
+win3="electrum-bsty-$REV-setup.exe"
 if test -f "dist/$win1"; then
     info "file exists: $win1"
 else
@@ -145,12 +145,12 @@ else
 fi
 
 # android
-apk1="Electrum-$VERSION.0-armeabi-v7a-release.apk"
-apk1_unsigned="Electrum-$VERSION.0-armeabi-v7a-release-unsigned.apk"
-apk2="Electrum-$VERSION.0-arm64-v8a-release.apk"
-apk2_unsigned="Electrum-$VERSION.0-arm64-v8a-release-unsigned.apk"
-apk3="Electrum-$VERSION.0-x86_64-release.apk"
-apk3_unsigned="Electrum-$VERSION.0-x86_64-release-unsigned.apk"
+apk1="Electrum-BSTY-$VERSION.0-armeabi-v7a-release.apk"
+apk1_unsigned="Electrum-BSTY-$VERSION.0-armeabi-v7a-release-unsigned.apk"
+apk2="Electrum-BSTY-$VERSION.0-arm64-v8a-release.apk"
+apk2_unsigned="Electrum-BSTY-$VERSION.0-arm64-v8a-release-unsigned.apk"
+apk3="Electrum-BSTY-$VERSION.0-x86_64-release.apk"
+apk3_unsigned="Electrum-BSTY-$VERSION.0-x86_64-release-unsigned.apk"
 if test -f "dist/$apk1"; then
     info "file exists: $apk1"
 else
@@ -166,7 +166,7 @@ fi
 
 # the macos binary is built on a separate machine.
 # the file that needs to be copied over is the codesigned release binary (regardless of builder role)
-dmg=electrum-$VERSION.dmg
+dmg=electrum-bsty-$VERSION.dmg
 if ! test -f "dist/$dmg"; then
     if [ ! -z "$RELEASEMANAGER" ] ; then  # RM
         fail "dmg is missing, aborting. Please build and codesign the dmg on a mac and copy it over."

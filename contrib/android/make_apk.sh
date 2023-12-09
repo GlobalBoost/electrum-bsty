@@ -6,7 +6,7 @@ CONTRIB_ANDROID="$(dirname "$(readlink -e "$0")")"
 CONTRIB="$CONTRIB_ANDROID"/..
 PROJECT_ROOT="$CONTRIB"/..
 PACKAGES="$PROJECT_ROOT"/packages/
-LOCALE="$PROJECT_ROOT"/electrum/locale/
+LOCALE="$PROJECT_ROOT"/electrum_bsty/locale/
 
 . "$CONTRIB"/build_tools_util.sh
 
@@ -27,7 +27,7 @@ popd
 # update locale
 info "preparing electrum-locale."
 (
-    LOCALE="$PROJECT_ROOT/electrum/locale/"
+    LOCALE="$PROJECT_ROOT/electrum_bsty/locale/"
     # we want the binary to have only compiled (.mo) locale files; not source (.po) files
     rm -rf "$LOCALE"
     "$CONTRIB/build_locale.sh" "$CONTRIB/deterministic-build/electrum-locale/locale/" "$LOCALE"
@@ -40,12 +40,12 @@ info "apk building phase starts."
 # Uncomment and change below to set a custom android package id,
 # e.g. to allow simultaneous mainnet and testnet installs of the apk.
 # defaults:
-#   export APP_PACKAGE_NAME=Electrum
-#   export APP_PACKAGE_DOMAIN=org.electrum
+#   export APP_PACKAGE_NAME=Electrum-BSTY
+#   export APP_PACKAGE_DOMAIN=org.electrum_bsty
 # FIXME: changing "APP_PACKAGE_NAME" seems to require a clean rebuild of ".buildozer/",
 #        to avoid that, maybe change "APP_PACKAGE_DOMAIN" instead.
 # So, in particular, to build a testnet apk, simply uncomment:
-#export APP_PACKAGE_DOMAIN=org.electrum.testnet
+#export APP_PACKAGE_DOMAIN=org.electrum_bsty.testnet
 
 if [ $CI ]; then
     # override log level specified in buildozer.spec to "debug":
@@ -58,7 +58,7 @@ if [[ "$3" == "release" ]] ; then
     export P4A_RELEASE_KEYSTORE_PASSWD="$4"
     export P4A_RELEASE_KEYALIAS_PASSWD="$4"
     export P4A_RELEASE_KEYSTORE=~/.keystore
-    export P4A_RELEASE_KEYALIAS=electrum
+    export P4A_RELEASE_KEYALIAS=electrum_bsty
     if [ -z "$P4A_RELEASE_KEYSTORE_PASSWD" ] || [ -z "$P4A_RELEASE_KEYALIAS_PASSWD" ]; then
         echo "p4a password not defined"
         exit 1
@@ -72,7 +72,7 @@ elif [[ "$3" == "debug" ]] ; then
     export P4A_DEBUG_KEYSTORE="$CONTRIB_ANDROID"/android_debug.keystore
     export P4A_DEBUG_KEYSTORE_PASSWD=unsafepassword
     export P4A_DEBUG_KEYALIAS_PASSWD=unsafepassword
-    export P4A_DEBUG_KEYALIAS=electrum
+    export P4A_DEBUG_KEYALIAS=electrum_bsty
     # create keystore if needed
     if [ ! -f "$P4A_DEBUG_KEYSTORE" ]; then
         keytool -genkey -v -keystore "$CONTRIB_ANDROID"/android_debug.keystore \

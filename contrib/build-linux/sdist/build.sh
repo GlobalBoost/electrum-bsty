@@ -35,7 +35,7 @@ docker build \
 # maybe do fresh clone
 if [ ! -z "$ELECBUILD_COMMIT" ] ; then
     info "ELECBUILD_COMMIT=$ELECBUILD_COMMIT. doing fresh clone and git checkout."
-    FRESH_CLONE="/tmp/electrum_build/sdist/fresh_clone/electrum"
+    FRESH_CLONE="/tmp/electrum_build/sdist/fresh_clone/electrum-bsty"
     rm -rf "$FRESH_CLONE" 2>/dev/null || ( info "we need sudo to rm prev FRESH_CLONE." && sudo rm -rf "$FRESH_CLONE" )
     umask 0022
     git clone "$PROJECT_ROOT" "$FRESH_CLONE"
@@ -56,9 +56,9 @@ if [ ! -z "$ELECBUILD_COMMIT" ] ; then  # fresh clone (reproducible build)
 fi
 docker run -it \
     --name electrum-sdist-builder-cont \
-    -v "$PROJECT_ROOT_OR_FRESHCLONE_ROOT":/opt/electrum \
+    -v "$PROJECT_ROOT_OR_FRESHCLONE_ROOT":/opt/electrum-bsty \
     --rm \
-    --workdir /opt/electrum/contrib/build-linux/sdist \
+    --workdir /opt/electrum-bsty/contrib/build-linux/sdist \
     --env OMIT_UNCLEAN_FILES \
     electrum-sdist-builder-img \
     ./make_sdist.sh

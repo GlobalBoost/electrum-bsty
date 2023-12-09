@@ -35,7 +35,7 @@ docker build \
 # maybe do fresh clone
 if [ ! -z "$ELECBUILD_COMMIT" ] ; then
     info "ELECBUILD_COMMIT=$ELECBUILD_COMMIT. doing fresh clone and git checkout."
-    FRESH_CLONE="/tmp/electrum_build/appimage/fresh_clone/electrum"
+    FRESH_CLONE="/tmp/electrum_build/appimage/fresh_clone/electrum-bsty"
     rm -rf "$FRESH_CLONE" 2>/dev/null || ( info "we need sudo to rm prev FRESH_CLONE." && sudo rm -rf "$FRESH_CLONE" )
     umask 0022
     git clone "$PROJECT_ROOT" "$FRESH_CLONE"
@@ -58,7 +58,7 @@ docker run -it \
     --name electrum-appimage-builder-cont \
     -v "$PROJECT_ROOT_OR_FRESHCLONE_ROOT":/opt/electrum \
     --rm \
-    --workdir /opt/electrum/contrib/build-linux/appimage \
+    --workdir /opt/electrum-bsty/contrib/build-linux/appimage \
     electrum-appimage-builder-img \
     ./make_appimage.sh
 

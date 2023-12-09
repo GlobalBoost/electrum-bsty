@@ -6,7 +6,7 @@ PROJECT_ROOT="$(dirname "$(readlink -e "$0")")/../../.."
 CONTRIB="$PROJECT_ROOT/contrib"
 CONTRIB_SDIST="$CONTRIB/build-linux/sdist"
 DISTDIR="$PROJECT_ROOT/dist"
-LOCALE="$PROJECT_ROOT/electrum/locale"
+LOCALE="$PROJECT_ROOT/electrum_bsty/locale"
 
 . "$CONTRIB"/build_tools_util.sh
 
@@ -33,7 +33,7 @@ git submodule update --init
     # Set option OMIT_UNCLEAN_FILES=1 to exclude the compiled locale files
     # see https://askubuntu.com/a/144139 (also see MANIFEST.in)
     rm -rf "$LOCALE"
-    cp -r "$CONTRIB/deterministic-build/electrum-locale/locale/" "$LOCALE/"
+    cp -r "$CONTRIB/deterministic-build/electrum-bsty-locale/locale/" "$LOCALE/"
     if ([ "$OMIT_UNCLEAN_FILES" != 1 ]); then
         "$CONTRIB/build_locale.sh" "$LOCALE" "$LOCALE"
     fi
@@ -41,7 +41,7 @@ git submodule update --init
 
 if ([ "$OMIT_UNCLEAN_FILES" = 1 ]); then
     # FIXME side-effecting repo... though in practice, this script probably runs in fresh_clone
-    rm -f "$PROJECT_ROOT/electrum/paymentrequest_pb2.py"
+    rm -f "$PROJECT_ROOT/electrum_bsty/paymentrequest_pb2.py"
 fi
 
 (
@@ -62,12 +62,12 @@ import importlib.util
 import os
 
 # load version.py; needlessly complicated alternative to "imp.load_source":
-version_spec = importlib.util.spec_from_file_location('version', 'electrum/version.py')
+version_spec = importlib.util.spec_from_file_location('version', 'electrum_bsty/version.py')
 version_module = importlib.util.module_from_spec(version_spec)
 version_spec.loader.exec_module(version_module)
 
 VER = version_module.ELECTRUM_VERSION
-os.rename(f"dist/_sourceonly/Electrum-{VER}.tar.gz", f"dist/Electrum-sourceonly-{VER}.tar.gz")
+os.rename(f"dist/_sourceonly/Electrum-BSTY-{VER}.tar.gz", f"dist/Electrum-BSTY-sourceonly-{VER}.tar.gz")
 EOF
         rmdir "$PY_DISTDIR"
     fi

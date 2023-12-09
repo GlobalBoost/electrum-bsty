@@ -6,8 +6,8 @@
 ;--------------------------------
 ;Variables
 
-  !define PRODUCT_NAME "Electrum"
-  !define PRODUCT_WEB_SITE "https://github.com/spesmilo/electrum"
+  !define PRODUCT_NAME "Electrum-BSTY"
+  !define PRODUCT_WEB_SITE "https://github.com/mendozg/electrum-bsty"
   !define PRODUCT_PUBLISHER "Electrum Technologies GmbH"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
@@ -16,7 +16,7 @@
 
   ;Name and file
   Name "${PRODUCT_NAME}"
-  OutFile "dist/electrum-setup.exe"
+  OutFile "dist/electrum-bsty-setup.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
@@ -72,7 +72,7 @@
   !define MUI_ABORTWARNING
   !define MUI_ABORTWARNING_TEXT "Are you sure you wish to abort the installation of ${PRODUCT_NAME}?"
 
-  !define MUI_ICON "..\..\electrum\gui\icons\electrum.ico"
+  !define MUI_ICON "..\..\electrum_bsty\gui\icons\electrum-bsty.ico"
 
 ;--------------------------------
 ;Pages
@@ -110,8 +110,8 @@ Section
   Delete "$SMPROGRAMS\${PRODUCT_NAME}\*.*"
 
   ;Files to pack into the installer
-  File /r "dist\electrum\*.*"
-  File "..\..\electrum\gui\icons\electrum.ico"
+  File /r "dist\electrum-bsty\*.*"
+  File "..\..\electrum_bsty\gui\icons\electrum-bsty.ico"
 
   ;Store installation folder
   WriteRegStr HKCU "Software\${PRODUCT_NAME}" "" $INSTDIR
@@ -132,15 +132,15 @@ Section
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\electrum-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\electrum-${PRODUCT_VERSION}.exe" 0
 
 
-  ;Links bitcoin: and lightning: URIs to Electrum
-  WriteRegStr HKCU "Software\Classes\bitcoin" "" "URL:bitcoin Protocol"
-  WriteRegStr HKCU "Software\Classes\bitcoin" "URL Protocol" ""
-  WriteRegStr HKCU "Software\Classes\bitcoin" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
-  WriteRegStr HKCU "Software\Classes\bitcoin\shell\open\command" "" "$\"$INSTDIR\electrum-${PRODUCT_VERSION}.exe$\" $\"%1$\""
+  ;Links globalboost: and lightning: URIs to Electrum-BSTY
+  WriteRegStr HKCU "Software\Classes\globalboost" "" "URL:globalboost Protocol"
+  WriteRegStr HKCU "Software\Classes\globalboost" "URL Protocol" ""
+  WriteRegStr HKCU "Software\Classes\globalboost" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
+  WriteRegStr HKCU "Software\Classes\globalboost\shell\open\command" "" "$\"$INSTDIR\electrum-bsty-${PRODUCT_VERSION}.exe$\" $\"%1$\""
   WriteRegStr HKCU "Software\Classes\lightning" "" "URL:lightning Protocol"
   WriteRegStr HKCU "Software\Classes\lightning" "URL Protocol" ""
   WriteRegStr HKCU "Software\Classes\lightning" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
-  WriteRegStr HKCU "Software\Classes\lightning\shell\open\command" "" "$\"$INSTDIR\electrum-${PRODUCT_VERSION}.exe$\" $\"%1$\""
+  WriteRegStr HKCU "Software\Classes\lightning\shell\open\command" "" "$\"$INSTDIR\electrum-bsty-${PRODUCT_VERSION}.exe$\" $\"%1$\""
 
   ;Adds an uninstaller possibility to Windows Uninstall or change a program section
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"

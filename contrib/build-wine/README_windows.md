@@ -9,8 +9,8 @@
 
 ### 1. Check out the code from GitHub:
 ```
-> git clone https://github.com/spesmilo/electrum.git
-> cd electrum
+> git clone https://github.com/mendozg/electrum-bsty.git
+> cd electrum-bsty
 > git submodule update --init
 ```
 
