@@ -56,7 +56,7 @@ if [ ! -z "$ELECBUILD_COMMIT" ] ; then  # fresh clone (reproducible build)
 fi
 docker run -it \
     --name electrum-appimage-builder-cont \
-    -v "$PROJECT_ROOT_OR_FRESHCLONE_ROOT":/opt/electrum \
+    -v "$PROJECT_ROOT_OR_FRESHCLONE_ROOT":/opt/electrum-bsty \
     --rm \
     --workdir /opt/electrum-bsty/contrib/build-linux/appimage \
     electrum-appimage-builder-img \
