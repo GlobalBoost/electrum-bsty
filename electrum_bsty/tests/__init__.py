@@ -5,7 +5,7 @@ import threading
 import tempfile
 import shutil
 
-import electrum
+import electrum_bsty as electrum
 import electrum_bsty.logging
 from electrum_bsty import constants
 from electrum_bsty import util
