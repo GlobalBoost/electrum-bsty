@@ -36,13 +36,13 @@ binaries += [('C:/tmp/libusb-1.0.dll', '.')]
 binaries += [('C:/tmp/libzbar-0.dll', '.')]
 
 datas = [
-    (home+'electrum_bsty/*.json', 'electrum'),
-    (home+'electrum_bsty/lnwire/*.csv', 'electrum/lnwire'),
-    (home+'electrum_bsty/wordlist/english.txt', 'electrum/wordlist'),
-    (home+'electrum_bsty/wordlist/slip39.txt', 'electrum/wordlist'),
-    (home+'electrum_bsty/locale', 'electrum/locale'),
-    (home+'electrum_bsty/plugins', 'electrum/plugins'),
-    (home+'electrum_bsty/gui/icons', 'electrum/gui/icons'),
+    (home+'electrum_bsty/*.json', 'electrum_bsty'),
+    (home+'electrum_bsty/lnwire/*.csv', 'electrum_bsty/lnwire'),
+    (home+'electrum_bsty/wordlist/english.txt', 'electrum_bsty/wordlist'),
+    (home+'electrum_bsty/wordlist/slip39.txt', 'electrum_bsty/wordlist'),
+    (home+'electrum_bsty/locale', 'electrum_bsty/locale'),
+    (home+'electrum_bsty/plugins', 'electrum_bsty/plugins'),
+    (home+'electrum_bsty/gui/icons', 'electrum_bsty/gui/icons'),
 ]
 datas += collect_data_files('trezorlib')
 datas += collect_data_files('safetlib')
