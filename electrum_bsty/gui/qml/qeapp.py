@@ -345,38 +345,38 @@ class ElectrumQmlApplication(QGuiApplication):
         ElectrumQmlApplication._daemon = daemon
 
         # TODO QT6 order of declaration is important now?
-        qmlRegisterType(QEAmount, 'org.electrum', 1, 0, 'Amount')
-        qmlRegisterType(QENewWalletWizard, 'org.electrum', 1, 0, 'QNewWalletWizard')
-        qmlRegisterType(QEServerConnectWizard, 'org.electrum', 1, 0, 'QServerConnectWizard')
-        qmlRegisterType(QEFilterProxyModel, 'org.electrum', 1, 0, 'FilterProxyModel')
-        qmlRegisterType(QSortFilterProxyModel, 'org.electrum', 1, 0, 'QSortFilterProxyModel')
+        qmlRegisterType(QEAmount, 'org.electrum_bsty', 1, 0, 'Amount')
+        qmlRegisterType(QENewWalletWizard, 'org.electrum_bsty', 1, 0, 'QNewWalletWizard')
+        qmlRegisterType(QEServerConnectWizard, 'org.electrum_bsty', 1, 0, 'QServerConnectWizard')
+        qmlRegisterType(QEFilterProxyModel, 'org.electrum_bsty', 1, 0, 'FilterProxyModel')
+        qmlRegisterType(QSortFilterProxyModel, 'org.electrum_bsty', 1, 0, 'QSortFilterProxyModel')
 
-        qmlRegisterType(QEWallet, 'org.electrum', 1, 0, 'Wallet')
-        qmlRegisterType(QEBitcoin, 'org.electrum', 1, 0, 'Bitcoin')
-        qmlRegisterType(QEQRParser, 'org.electrum', 1, 0, 'QRParser')
-        qmlRegisterType(QEQRScanner, 'org.electrum', 1, 0, 'QRScanner')
-        qmlRegisterType(QEFX, 'org.electrum', 1, 0, 'FX')
-        qmlRegisterType(QETxFinalizer, 'org.electrum', 1, 0, 'TxFinalizer')
-        qmlRegisterType(QEInvoice, 'org.electrum', 1, 0, 'Invoice')
-        qmlRegisterType(QEInvoiceParser, 'org.electrum', 1, 0, 'InvoiceParser')
-        qmlRegisterType(QEAddressDetails, 'org.electrum', 1, 0, 'AddressDetails')
-        qmlRegisterType(QETxDetails, 'org.electrum', 1, 0, 'TxDetails')
-        qmlRegisterType(QEChannelOpener, 'org.electrum', 1, 0, 'ChannelOpener')
-        qmlRegisterType(QELnPaymentDetails, 'org.electrum', 1, 0, 'LnPaymentDetails')
-        qmlRegisterType(QEChannelDetails, 'org.electrum', 1, 0, 'ChannelDetails')
-        qmlRegisterType(QESwapHelper, 'org.electrum', 1, 0, 'SwapHelper')
-        qmlRegisterType(QERequestDetails, 'org.electrum', 1, 0, 'RequestDetails')
-        qmlRegisterType(QETxRbfFeeBumper, 'org.electrum', 1, 0, 'TxRbfFeeBumper')
-        qmlRegisterType(QETxCpfpFeeBumper, 'org.electrum', 1, 0, 'TxCpfpFeeBumper')
-        qmlRegisterType(QETxCanceller, 'org.electrum', 1, 0, 'TxCanceller')
-        qmlRegisterType(QEBip39RecoveryListModel, 'org.electrum', 1, 0, 'Bip39RecoveryListModel')
+        qmlRegisterType(QEWallet, 'org.electrum_bsty', 1, 0, 'Wallet')
+        qmlRegisterType(QEBitcoin, 'org.electrum_bsty', 1, 0, 'Bitcoin')
+        qmlRegisterType(QEQRParser, 'org.electrum_bsty', 1, 0, 'QRParser')
+        qmlRegisterType(QEQRScanner, 'org.electrum_bsty', 1, 0, 'QRScanner')
+        qmlRegisterType(QEFX, 'org.electrum_bsty', 1, 0, 'FX')
+        qmlRegisterType(QETxFinalizer, 'org.electrum_bsty', 1, 0, 'TxFinalizer')
+        qmlRegisterType(QEInvoice, 'org.electrum_bsty', 1, 0, 'Invoice')
+        qmlRegisterType(QEInvoiceParser, 'org.electrum_bsty', 1, 0, 'InvoiceParser')
+        qmlRegisterType(QEAddressDetails, 'org.electrum_bsty', 1, 0, 'AddressDetails')
+        qmlRegisterType(QETxDetails, 'org.electrum_bsty', 1, 0, 'TxDetails')
+        qmlRegisterType(QEChannelOpener, 'org.electrum_bsty', 1, 0, 'ChannelOpener')
+        qmlRegisterType(QELnPaymentDetails, 'org.electrum_bsty', 1, 0, 'LnPaymentDetails')
+        qmlRegisterType(QEChannelDetails, 'org.electrum_bsty', 1, 0, 'ChannelDetails')
+        qmlRegisterType(QESwapHelper, 'org.electrum_bsty', 1, 0, 'SwapHelper')
+        qmlRegisterType(QERequestDetails, 'org.electrum_bsty', 1, 0, 'RequestDetails')
+        qmlRegisterType(QETxRbfFeeBumper, 'org.electrum_bsty', 1, 0, 'TxRbfFeeBumper')
+        qmlRegisterType(QETxCpfpFeeBumper, 'org.electrum_bsty', 1, 0, 'TxCpfpFeeBumper')
+        qmlRegisterType(QETxCanceller, 'org.electrum_bsty', 1, 0, 'TxCanceller')
+        qmlRegisterType(QEBip39RecoveryListModel, 'org.electrum_bsty', 1, 0, 'Bip39RecoveryListModel')
 
         # TODO QT6: these were declared as uncreatable, but that doesn't seem to work for pyqt6
-        # qmlRegisterUncreatableType(QEAmount, 'org.electrum', 1, 0, 'Amount', 'Amount can only be used as property')
-        # qmlRegisterUncreatableType(QENewWalletWizard, 'org.electrum', 1, 0, 'QNewWalletWizard', 'QNewWalletWizard can only be used as property')
-        # qmlRegisterUncreatableType(QEServerConnectWizard, 'org.electrum', 1, 0, 'QServerConnectWizard', 'QServerConnectWizard can only be used as property')
-        # qmlRegisterUncreatableType(QEFilterProxyModel, 'org.electrum', 1, 0, 'FilterProxyModel', 'FilterProxyModel can only be used as property')
-        # qmlRegisterUncreatableType(QSortFilterProxyModel, 'org.electrum', 1, 0, 'QSortFilterProxyModel', 'QSortFilterProxyModel can only be used as property')
+        # qmlRegisterUncreatableType(QEAmount, 'org.electrum_bsty', 1, 0, 'Amount', 'Amount can only be used as property')
+        # qmlRegisterUncreatableType(QENewWalletWizard, 'org.electrum_bsty', 1, 0, 'QNewWalletWizard', 'QNewWalletWizard can only be used as property')
+        # qmlRegisterUncreatableType(QEServerConnectWizard, 'org.electrum_bsty', 1, 0, 'QServerConnectWizard', 'QServerConnectWizard can only be used as property')
+        # qmlRegisterUncreatableType(QEFilterProxyModel, 'org.electrum_bsty', 1, 0, 'FilterProxyModel', 'FilterProxyModel can only be used as property')
+        # qmlRegisterUncreatableType(QSortFilterProxyModel, 'org.electrum_bsty', 1, 0, 'QSortFilterProxyModel', 'QSortFilterProxyModel can only be used as property')
 
         self.engine = QQmlApplicationEngine(parent=self)
 
@@ -389,8 +389,8 @@ class ElectrumQmlApplication(QGuiApplication):
 
         # add a monospace font as we can't rely on device having one
         self.fixedFont = 'PT Mono'
-        not_loaded = QFontDatabase.addApplicationFont('electrum/gui/qml/fonts/PTMono-Regular.ttf') < 0
-        not_loaded = QFontDatabase.addApplicationFont('electrum/gui/qml/fonts/PTMono-Bold.ttf') < 0 and not_loaded
+        not_loaded = QFontDatabase.addApplicationFont('electrum_bsty/gui/qml/fonts/PTMono-Regular.ttf') < 0
+        not_loaded = QFontDatabase.addApplicationFont('electrum_bsty/gui/qml/fonts/PTMono-Bold.ttf') < 0 and not_loaded
         if not_loaded:
             self.logger.warning('Could not load font PT Mono')
             self.fixedFont = 'Monospace' # hope for the best
