@@ -11,7 +11,7 @@ import os
 
 if __name__ == '__main__':
     project_root = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    version_file_path = os.path.join(project_root, "electrum-bsty", "version.py")
+    version_file_path = os.path.join(project_root, "electrum_bsty", "version.py")
 
     # load version.py; needlessly complicated alternative to "imp.load_source":
     version_spec = importlib.util.spec_from_file_location('version', version_file_path)

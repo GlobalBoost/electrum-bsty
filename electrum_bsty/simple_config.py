@@ -452,12 +452,14 @@ class SimpleConfig(Logger):
 
         return new_path
 
-    def get_fallback_wallet_path(self):
+    def get_datadir_wallet_path(self):
         util.assert_datadir_available(self.path)
         dirpath = os.path.join(self.path, "wallets")
         make_dir(dirpath, allow_symlink=False)
-        path = os.path.join(self.path, "wallets", "default_wallet")
-        return path
+        return dirpath
+
+    def get_fallback_wallet_path(self):
+        return os.path.join(self.get_datadir_wallet_path(), "default_wallet")
 
     def remove_from_recently_open(self, filename):
         recent = self.RECENTLY_OPEN_WALLET_FILES or []
@@ -925,7 +927,9 @@ class SimpleConfig(Logger):
     # config variables ----->
     NETWORK_AUTO_CONNECT = ConfigVar('auto_connect', default=True, type_=bool)
     NETWORK_ONESERVER = ConfigVar('oneserver', default=False, type_=bool)
-    NETWORK_PROXY = ConfigVar('proxy', default=None)
+    NETWORK_PROXY = ConfigVar('proxy', default=None, type_=str)
+    NETWORK_PROXY_USER = ConfigVar('proxy_user', default=None, type_=str)
+    NETWORK_PROXY_PASSWORD = ConfigVar('proxy_password', default=None, type_=str)
     NETWORK_SERVER = ConfigVar('server', default=None, type_=str)
     NETWORK_NOONION = ConfigVar('noonion', default=False, type_=bool)
     NETWORK_OFFLINE = ConfigVar('offline', default=False, type_=bool)

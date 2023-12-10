@@ -267,7 +267,7 @@ if getattr(sys, "_ELECTRUM_RUNNING_VIA_RUNELECTRUM", False):
     root_logger.addHandler(_inmemory_startup_logs)
 
 # creates a logger specifically for electrum library
-electrum_logger = logging.getLogger("electrum-bsty")
+electrum_logger = logging.getLogger("electrum_bsty")
 electrum_logger.setLevel(logging.DEBUG)
 
 

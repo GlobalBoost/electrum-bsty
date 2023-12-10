@@ -55,7 +55,7 @@ if TYPE_CHECKING:
 _logger = get_logger(__name__)
 
 
-REQUEST_HEADERS = {'Accept': 'application/globalboost-paymentrequest', 'User-Agent': 'Electrum'}
+REQUEST_HEADERS = {'Accept': 'application/globalboost-paymentrequest', 'User-Agent': 'Electrum-BSTY'}
 ACK_HEADERS = {'Content-Type':'application/globalboost-payment','Accept':'application/globalboost-paymentack','User-Agent':'Electrum'}
 
 ca_path = certifi.where()

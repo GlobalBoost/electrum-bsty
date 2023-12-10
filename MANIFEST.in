@@ -1,6 +1,6 @@
 include LICENCE RELEASE-NOTES AUTHORS
 include README.md
-include electrum.desktop
+include electrum-bsty.desktop
 include *.py
 include run_electrum
 include org.electrum.electrum.metainfo.xml
@@ -11,14 +11,14 @@ include contrib/requirements/requirements*.txt
 include contrib/deterministic-build/requirements*.txt
 include contrib/*.sh
 
-graft electrum
-prune electrum/tests
+graft electrum_bsty
+prune electrum_bsty/tests
 graft contrib/udev
 
-exclude electrum/*.so
-exclude electrum/*.so.0
-exclude electrum/*.dll
-exclude electrum/*.dylib
+exclude electrum_bsty/*.so
+exclude electrum_bsty/*.so.0
+exclude electrum_bsty/*.dll
+exclude electrum_bsty/*.dylib
 
 global-exclude __pycache__
 global-exclude *.py[co~]
