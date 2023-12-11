@@ -75,7 +75,7 @@ from electrum_bsty.lnaddr import lndecode
 from electrum_bsty.submarine_swaps import SwapServerError
 
 from .exception_window import Exception_Hook
-from .amountedit import BTCAmountEdit
+from .amountedit import BSTYAmountEdit
 from .qrcodewidget import QRDialog
 from .qrtextedit import ShowQRTextEdit, ScanQRTextEdit, ScanShowQRTextEdit
 from .transaction_dialog import show_transaction
