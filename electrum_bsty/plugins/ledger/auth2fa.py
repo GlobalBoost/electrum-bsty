@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 from PyQt5.QtWidgets import (QDialog, QLineEdit, QTextEdit, QVBoxLayout, QLabel,
                              QWidget, QHBoxLayout, QComboBox)
 
-from btchip.btchip import BSTYhipException
+from btchip.btchip import BTChipException
 
 from electrum_bsty.gui.qt.util import PasswordLineEdit
 
@@ -163,6 +163,6 @@ class LedgerAuthDialog(QDialog):
         try:
             mode = self.dongle.exchange(bytearray(apdu))
             return mode
-        except BSTYhipException as e:
+        except BTChipException as e:
             _logger.debug('Device getMode Failed')
         return 0x11

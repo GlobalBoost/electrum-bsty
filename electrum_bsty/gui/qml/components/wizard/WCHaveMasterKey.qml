@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import org.electrum_bsty 1.0
+import org.electrum 1.0
 
 import "../controls"
 

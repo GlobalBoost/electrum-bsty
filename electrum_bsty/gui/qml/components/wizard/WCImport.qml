@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-import org.electrum_bsty 1.0
+import org.electrum 1.0
 
 import "../controls"
 
@@ -79,7 +79,7 @@ WizardComponent {
                         dialog.onFound.connect(function() {
                             if (verify(dialog.scanData)) {
                                 if (import_ta.text != '')
-                                    import_ta.text = import_ta.text + ',\n'
+                                    import_ta.text = import_ta.text + '\n'
                                 import_ta.text = import_ta.text + dialog.scanData
                             }
                             dialog.close()

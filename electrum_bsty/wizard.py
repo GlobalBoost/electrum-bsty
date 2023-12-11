@@ -532,7 +532,7 @@ class NewWalletWizard(AbstractWizard):
                     addresses[addr] = {}
         elif data['keystore_type'] in ['createseed', 'haveseed']:
             if data['seed_type'] in ['old', 'standard', 'segwit']:
-                self._logger.debug('creating keystore from electrum seed')
+                self._logger.debug('creating keystore from electrum_bsty seed')
                 k = keystore.from_seed(data['seed'], data['seed_extra_words'], data['wallet_type'] == 'multisig')
             elif data['seed_type'] in ['bip39', 'slip39']:
                 self._logger.debug('creating keystore from %s seed' % data['seed_type'])

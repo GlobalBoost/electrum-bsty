@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import org.electrum_bsty 1.0
+import org.electrum 1.0
 
 import "controls"
 
@@ -73,6 +73,7 @@ Pane {
                             text: Daemon.currentWallet.txinType
                             font.pixelSize: constants.fontSizeSmall
                             font.bold: true
+                            iconSource: '../../../icons/script_white.png'
                         }
                         Tag {
                             Layout.alignment: Qt.AlignHCenter
@@ -80,6 +81,7 @@ Pane {
                             visible: Daemon.currentWallet.isDeterministic
                             font.pixelSize: constants.fontSizeSmall
                             font.bold: true
+                            iconSource: '../../../icons/hd_white.png'
                         }
                         Tag {
                             Layout.alignment: Qt.AlignHCenter

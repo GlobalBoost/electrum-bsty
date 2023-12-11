@@ -3,7 +3,7 @@
 # For example:
 # $ VERSION=$("$CONTRIB"/print_electrum_version.py)
 # instead of
-# $ VERSION=$(python3 -c "import electrum; print(electrum.version.ELECTRUM_VERSION)")
+# $ VERSION=$(python3 -c "import electrum_bsty; print(electrum_bsty.version.ELECTRUM_VERSION)")
 
 import importlib.util
 import os

@@ -1,4 +1,4 @@
-# Electrum - Lightweight GlobalBoost-Y client
+# Electrum - Lightweight Bitcoin client
 
 ```
 Licence: MIT Licence

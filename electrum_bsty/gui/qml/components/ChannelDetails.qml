@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import org.electrum_bsty 1.0
+import org.electrum 1.0
 
 import "controls"
 
@@ -210,6 +210,30 @@ Pane {
                     Label {
                         Layout.fillWidth: true
                         text: channeldetails.shortCid
+                    }
+
+                    Label {
+                        text: qsTr('Local SCID alias')
+                        color: Material.accentColor
+                        visible: channeldetails.localScidAlias
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: channeldetails.localScidAlias
+                        visible: channeldetails.localScidAlias
+                    }
+
+                    Label {
+                        text: qsTr('Remote SCID alias')
+                        color: Material.accentColor
+                        visible: channeldetails.remoteScidAlias
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: channeldetails.remoteScidAlias
+                        visible: channeldetails.remoteScidAlias
                     }
 
                     Label {

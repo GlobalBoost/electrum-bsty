@@ -445,6 +445,7 @@ class SimpleConfig(Logger):
 
         new_path = self.get_fallback_wallet_path()
 
+        # TODO: this can be removed by now
         # default path in pre 1.9 versions
         old_path = os.path.join(self.path, "electrum.dat")
         if os.path.exists(old_path) and not os.path.exists(new_path):

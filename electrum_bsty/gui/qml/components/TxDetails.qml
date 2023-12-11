@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Material
 
-import org.electrum_bsty 1.0
+import org.electrum 1.0
 
 import "controls"
 
@@ -47,6 +47,16 @@ Pane {
                     Heading {
                         Layout.columnSpan: 2
                         text: qsTr('On-chain Transaction')
+                    }
+
+                    InfoTextArea {
+                        id: warn
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        Layout.bottomMargin: constants.paddingLarge
+                        visible: txdetails.warning
+                        text: txdetails.warning
+                        iconStyle: InfoTextArea.IconStyle.Warn
                     }
 
                     InfoTextArea {
@@ -336,7 +346,20 @@ Pane {
                 icon.source: '../../icons/key.png'
                 text: qsTr('Sign')
                 visible: txdetails.canSign
-                onClicked: txdetails.sign()
+                onClicked: {
+                    if (txdetails.shouldConfirm) {
+                        var dialog = app.messageDialog.createObject(app, {
+                            text: qsTr('Confirm signing non-standard transaction?'),
+                            yesno: true
+                        })
+                        dialog.accepted.connect(function() {
+                            txdetails.sign()
+                        })
+                        dialog.open()
+                    } else {
+                        txdetails.sign()
+                    }
+                }
             }
 
             FlatButton {

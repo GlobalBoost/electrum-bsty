@@ -146,7 +146,7 @@ class NodesListWidget(QTreeWidget):
     def update(self, *, network: Network, servers: dict):
         self.clear()
 
-        use_tor = network.tor_proxy
+        use_tor = bool(network.is_proxy_tor)
 
         # connected servers
         connected_servers_item = QTreeWidgetItem([_("Connected nodes"), ''])
@@ -432,8 +432,6 @@ class NetworkChoiceLayout(object):
         net_params = self.network.get_parameters()
         if self.proxy_cb.isChecked():
             if not self.proxy_port.hasAcceptableInput():
-                return
-            if ':' in self.proxy_host.text():  # avoid deserialization pitfall
                 return
             proxy = {'mode':str(self.proxy_mode.currentText()).lower(),
                      'host':str(self.proxy_host.text()),

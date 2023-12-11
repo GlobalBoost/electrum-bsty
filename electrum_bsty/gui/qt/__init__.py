@@ -122,13 +122,13 @@ class ElectrumGui(BaseElectrumGui, Logger):
         if hasattr(QtCore.Qt, "AA_ShareOpenGLContexts"):
             QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
         if hasattr(QGuiApplication, 'setDesktopFileName'):
-            QGuiApplication.setDesktopFileName('electrum-bsty.desktop')
+            QGuiApplication.setDesktopFileName('electrum.desktop')
         self.gui_thread = threading.current_thread()
         self.windows = []  # type: List[ElectrumWindow]
         self.efilter = OpenFileEventFilter(self.windows)
         self.app = QElectrumApplication(sys.argv)
         self.app.installEventFilter(self.efilter)
-        self.app.setWindowIcon(read_QIcon("electrum-bsty.png"))
+        self.app.setWindowIcon(read_QIcon("electrum.png"))
         self._cleaned_up = False
         # timer
         self.timer = QTimer(self.app)
@@ -156,7 +156,7 @@ class ElectrumGui(BaseElectrumGui, Logger):
 
     def _init_tray(self):
         self.tray = QSystemTrayIcon(self.tray_icon(), None)
-        self.tray.setToolTip('Electrum-BSTY')
+        self.tray.setToolTip('Electrum')
         self.tray.activated.connect(self.tray_activated)
         self.build_tray_menu()
         self.tray.show()
@@ -413,9 +413,9 @@ class ElectrumGui(BaseElectrumGui, Logger):
         wizard = QENewWalletWizard(self.config, self.app, self.plugins, self.daemon, path)
         result = wizard.exec()
         # TODO: use dialog.open() instead to avoid new event loop spawn?
-        self.logger.info(f'{result}')
+        self.logger.info(f'wizard dialog exec result={result}')
         if result == QENewWalletWizard.Rejected:
-            self.logger.info('ok bye bye')
+            self.logger.info('wizard dialog cancelled by user')
             return
 
         d = wizard.get_wizard_data()
@@ -458,10 +458,10 @@ class ElectrumGui(BaseElectrumGui, Logger):
                 'xpub2': db.get('x2')['xpub'],
             }
             wizard = QENewWalletWizard(self.config, self.app, self.plugins, self.daemon, path,
-                                       start_viewstate=WizardViewState('trustedcoin_tos_email', data, {}))
+                                       start_viewstate=WizardViewState('trustedcoin_tos', data, {}))
             result = wizard.exec()
             if result == QENewWalletWizard.Rejected:
-                self.logger.info('ok bye bye')
+                self.logger.info('wizard dialog cancelled by user')
                 return
             db.put('x3', wizard.get_wizard_data()['x3'])
             db.write()
