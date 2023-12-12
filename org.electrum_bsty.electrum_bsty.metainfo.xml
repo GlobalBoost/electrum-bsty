@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 Soren Stoutner <soren@stoutner.com> -->
+<component type="desktop-application">
+  <id>org.electrum_bsty.electrum_bsty</id>
+
+  <name>Electrum-BSTY</name>
+  <summary>GlobalBoost Wallet</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      Electrum-BSTY is a lightweight GlobalBoost wallet focused is speed, with low resource usage and simplifying GlobalBoost.
+      Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the GlobalBoost system.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">electrum-bsty.desktop</launchable>
+
+  <content_rating type="oars-1.1" />
+</component>

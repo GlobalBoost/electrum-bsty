@@ -1,6 +1,6 @@
 import QtQuick
 
-import org.electrum 1.0
+import org.electrum_bsty 1.0
 
 Item {
     id: root

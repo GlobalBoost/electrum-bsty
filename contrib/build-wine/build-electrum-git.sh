@@ -48,7 +48,7 @@ $WINE_PYTHON -m pip install --no-build-isolation --no-dependencies --no-warn-scr
 
 pushd $WINEPREFIX/drive_c/electrum-bsty
 # see https://github.com/pypa/pip/issues/2195 -- pip makes a copy of the entire directory
-info "Pip installing Electrum. This might take a long time if the project folder is large."
+info "Pip installing Electrum-BSTY. This might take a long time if the project folder is large."
 $WINE_PYTHON -m pip install --no-build-isolation --no-dependencies --no-warn-script-location .
 # pyinstaller needs to be able to "import electrum_bsty", for which we need libsecp256k1:
 # (or could try "pip install -e" instead)
@@ -68,8 +68,8 @@ find -exec touch -h -d '2000-11-11T11:11:11+00:00' {} +
 popd
 
 info "building NSIS installer"
-# $VERSION could be passed to the electrum.nsi script, but this would require some rewriting in the script itself.
-makensis -DPRODUCT_VERSION=$VERSION electrum.nsi
+# $VERSION could be passed to the electrum-bsty.nsi script, but this would require some rewriting in the script itself.
+makensis -DPRODUCT_VERSION=$VERSION electrum-bsty.nsi
 
 cd dist
 mv electrum-bsty-setup.exe $NAME_ROOT-$VERSION-setup.exe

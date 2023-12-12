@@ -282,7 +282,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, QtEventListener):
         # If the option hasn't been set yet
         if not config.cv.AUTOMATIC_CENTRALIZED_UPDATE_CHECKS.is_set():
             choice = self.question(title="Electrum - " + _("Enable update check"),
-                                   msg=_("For security reasons we advise that you always use the latest version of Electrum.") + " " +
+                                   msg=_("For security reasons we advise that you always use the latest version of Electrum-BSTY.") + " " +
                                        _("Would you like to be notified when there is a newer version of Electrum available?"))
             config.AUTOMATIC_CENTRALIZED_UPDATE_CHECKS = bool(choice)
 
@@ -1807,7 +1807,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger, QtEventListener):
         assert not self.wallet.has_lightning()
         if self.wallet.can_have_deterministic_lightning():
             msg = _(
-                "Lightning is not enabled because this wallet was created with an old version of Electrum. "
+                "Lightning is not enabled because this wallet was created with an old version of Electrum-BSTY. "
                 "Create lightning keys?")
         else:
             msg = _(

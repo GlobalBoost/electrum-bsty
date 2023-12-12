@@ -2,7 +2,7 @@
 
 ## Just the glue please
 
-This code connects the public USB API and Electrum. Leverages all
+This code connects the public USB API and Electrum-BSTY. Leverages all
 the good work that's been done by the Electrum team to support
 hardware wallets.
 
