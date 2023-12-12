@@ -41,11 +41,11 @@ info "apk building phase starts."
 # e.g. to allow simultaneous mainnet and testnet installs of the apk.
 # defaults:
 #   export APP_PACKAGE_NAME=Electrum-BSTY
-#   export APP_PACKAGE_DOMAIN=org.electrum_bsty
+#   export APP_PACKAGE_DOMAIN=org.electrum
 # FIXME: changing "APP_PACKAGE_NAME" seems to require a clean rebuild of ".buildozer/",
 #        to avoid that, maybe change "APP_PACKAGE_DOMAIN" instead.
 # So, in particular, to build a testnet apk, simply uncomment:
-#export APP_PACKAGE_DOMAIN=org.electrum_bsty.testnet
+#export APP_PACKAGE_DOMAIN=org.electrum.testnet
 
 if [ $CI ]; then
     # override log level specified in buildozer.spec to "debug":

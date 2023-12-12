@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import org.electrum_bsty 1.0
+org.electrum 1.0
 
 ElComboBox {
     id: expires

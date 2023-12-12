@@ -9,7 +9,7 @@ import QtQuick.Window
 import QtQml
 import QtMultimedia
 
-import org.electrum_bsty 1.0
+org.electrum 1.0
 
 import "controls"
 
