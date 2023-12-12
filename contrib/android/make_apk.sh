@@ -30,7 +30,7 @@ info "preparing electrum-locale."
     LOCALE="$PROJECT_ROOT/electrum_bsty/locale/"
     # we want the binary to have only compiled (.mo) locale files; not source (.po) files
     rm -rf "$LOCALE"
-    "$CONTRIB/build_locale.sh" "$CONTRIB/deterministic-build/electrum-locale/locale/" "$LOCALE"
+    "$CONTRIB/build_locale.sh" "$CONTRIB/deterministic-build/electrum-bsty-locale/locale/" "$LOCALE"
 )
 
 pushd "$CONTRIB_ANDROID"

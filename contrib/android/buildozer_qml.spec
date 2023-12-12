@@ -7,7 +7,7 @@ title = Electrum-BSTY
 package.name = Electrum_BSTY
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.electrum
+package.domain = org.electrum_bsty
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -133,7 +133,7 @@ android.accept_sdk_license = True
 #android.add_jars = foo.jar,bar.jar,path/to/more/*.jar
 #android.add_jars = lib/android/zbar.jar
 
-android.add_jars = .buildozer/android/platform/*/build/libs_collections/Electrum/jar/*.jar
+android.add_jars = .buildozer/android/platform/*/build/libs_collections/Electrum_BSTY/jar/*.jar
 
 
 # (list) List of Java files to add to the android project (can be java or a
@@ -144,7 +144,7 @@ android.gradle_dependencies =
     com.android.support:support-compat:28.0.0,
     me.dm7.barcodescanner:zxing:1.9.8
 
-android.add_activities = org.electrum.qr.SimpleScannerActivity
+android.add_activities = org.electrum_bsty.qr.SimpleScannerActivity
 
 # (list) Put these files or directories in the apk res directory.
 # The option may be used in three ways, the value may contain one or zero ':'
@@ -156,7 +156,7 @@ android.add_activities = org.electrum.qr.SimpleScannerActivity
 # 3) A directory, here 'legal_resources' must contain one or more directories,
 # each of a resource kind:  drawable, xml, etc...
 # android.add_resources = legal_resources
-android.add_resources = electrum/gui/qml/android_res/layout:layout
+android.add_resources = electrum_bsty/gui/qml/android_res/layout:layout
 
 # (str) python-for-android branch to use, if not master, useful to try
 # not yet merged features.
