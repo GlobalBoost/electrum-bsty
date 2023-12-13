@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-org.electrum 1.0
+import org.electrum 1.0
 
 ElComboBox {
     id: control

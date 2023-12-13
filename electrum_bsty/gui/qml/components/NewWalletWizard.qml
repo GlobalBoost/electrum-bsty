@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-org.electrum 1.0
+import org.electrum 1.0
 
 import "wizard"
 
