@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2013 Soren Stoutner <soren@stoutner.com> -->
 <component type="desktop-application">
-  <id>org.electrum_bsty.electrum_bsty</id>
+  <id>org.electrum.electrum</id>
 
   <name>Electrum-BSTY</name>
   <summary>GlobalBoost Wallet</summary>
