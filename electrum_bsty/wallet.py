@@ -609,7 +609,7 @@ class Abstract_Wallet(ABC, Logger, EventListener):
             addr = str(addrs[0])
             if not bitcoin.is_address(addr):
                 neutered_addr = addr[:5] + '..' + addr[-2:]
-                raise WalletFileException(f'The addresses in this wallet are not bitcoin addresses.\n'
+                raise WalletFileException(f'The addresses in this wallet are not globalboost addresses.\n'
                                           f'e.g. {neutered_addr} (length: {len(addr)})')
 
     def check_returned_address_for_corruption(func):
@@ -758,7 +758,7 @@ class Abstract_Wallet(ABC, Logger, EventListener):
         if self.is_watching_only():
             raise UserFacingException(_("This is a watching-only wallet"))
         if not is_address(address):
-            raise UserFacingException(f"Invalid bitcoin address: {address}")
+            raise UserFacingException(f"Invalid globalboost address: {address}")
         if not self.is_mine(address):
             raise UserFacingException(_('Address not in wallet.') + f' {address}')
         index = self.get_address_index(address)
@@ -1699,7 +1699,7 @@ class Abstract_Wallet(ABC, Logger, EventListener):
                 addrs = self.get_change_addresses(slice_start=-self.gap_limit_for_change)
                 change_addrs = [random.choice(addrs)] if addrs else []
         for addr in change_addrs:
-            assert is_address(addr), f"not valid bitcoin address: {addr}"
+            assert is_address(addr), f"not valid globalboost address: {addr}"
             # note that change addresses are not necessarily ismine
             # in which case this is a no-op
             self.check_address_for_corruption(addr)
@@ -1730,7 +1730,7 @@ class Abstract_Wallet(ABC, Logger, EventListener):
                 selected_addr = random.choice(addrs)
             else:  # fallback for e.g. imported wallets
                 selected_addr = self.get_receiving_address()
-        assert is_address(selected_addr), f"not valid bitcoin address: {selected_addr}"
+        assert is_address(selected_addr), f"not valid globalboost address: {selected_addr}"
         return selected_addr
 
     def can_pay_onchain(self, outputs, coins=None):
@@ -3864,7 +3864,7 @@ def restore_wallet_from_text(
     gap_limit: Optional[int] = None,
 ) -> dict:
     """Restore a wallet from text. Text can be a seed phrase, a master
-    public key, a master private key, a list of bitcoin addresses
+    public key, a master private key, a list of globalboost addresses
     or bitcoin private keys."""
     if path is None:  # create wallet in-memory
         storage = None

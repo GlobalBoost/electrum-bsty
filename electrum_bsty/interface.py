@@ -1105,7 +1105,7 @@ class Interface(Logger):
             return ''
         if not bitcoin.is_address(res):
             # note: do not hard-fail -- allow server to use future-type
-            #       bitcoin address we do not recognize
+            #       globalboost address we do not recognize
             self.logger.info(f"invalid donation address from server: {repr(res)}")
             res = ''
         return res

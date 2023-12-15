@@ -25,7 +25,7 @@ def parse_bip21_URI(uri: str) -> dict:
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise InvalidBitcoinURI("Not a bitcoin address")
+            raise InvalidBitcoinURI("Not a globalboost address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
@@ -47,7 +47,7 @@ def parse_bip21_URI(uri: str) -> dict:
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise InvalidBitcoinURI(f"Invalid bitcoin address: {address}")
+            raise InvalidBitcoinURI(f"Invalid globalboost address: {address}")
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
