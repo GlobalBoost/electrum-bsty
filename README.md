@@ -1,4 +1,4 @@
-# Electrum - Lightweight Bitcoin client
+# Electrum-BSTY - Lightweight GlobalBoost client
 
 ```
 Licence: MIT Licence
@@ -117,7 +117,7 @@ $ pytest electrum/tests -v
 
 To run a single file, specify it directly like this:
 ```
-$ pytest electrum/tests/test_bitcoin.py -v
+$ pytest electrum_bsty/tests/test_bitcoin.py -v
 ```
 
 ## Creating Binaries
